@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <style>
+    
+            
+        body {
+            background-color: rgba(225, 65, 37, 0.871);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        #calculator {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 8px;
+            max-width: 350px;
+            margin: auto;
+        }
+
+        input {
+            grid-column: span 4;
+            padding: 40px;
+            font-size: 18px;
+            text-align: right;
+        }
+
+        button {
+            padding: 19px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+    </style>
+    <title>Simple Calculator</title>
+</head>
+<body>
+    <h1>CALCULATOR</h1>
+    <div id="calculator">
+        <input type="text" id="display" readonly>
+        <button onclick="clearDisplay()">C</button>
+        <button onclick="appendSymbol('/')">/</button>
+        <button onclick="appendSymbol('*')">X</button>
+        <button onclick="appendSymbol('7')">7</button>
+        <button onclick="appendSymbol('8')">8</button>
+        <button onclick="appendSymbol('9')">9</button>
+        <button onclick="appendSymbol('-')">-</button>
+        <button onclick="appendSymbol('4')">4</button>
+        <button onclick="appendSymbol('5')">5</button>
+        <button onclick="appendSymbol('6')">6</button>
+        <button onclick="appendSymbol('+')">+</button>
+        <button onclick="appendSymbol('1')">1</button>
+        <button onclick="appendSymbol('2')">2</button>
+        <button onclick="appendSymbol('3')">3</button>
+        <button onclick="calculate()">=</button>
+        <button onclick="appendSymbol('0')">0</button>
+        <button onclick="appendSymbol('.')">.</button>
+    </div>
+
+    <script>
+        let display = document.getElementById('display');
+        let currentInput = '';
+
+        function appendSymbol(symbol) {
+            currentInput += symbol;
+            display.value = currentInput;
+        }
+
+        function calculate() {
+            try {
+                currentInput = eval(currentInput);
+                display.value = currentInput;
+            } catch (error) {
+                display.value = 'Error';
+            }
+        }
+
+        function clearDisplay() {
+            currentInput = '';
+            display.value = '';
+        }
+    </script>
+</body>
+</html>
